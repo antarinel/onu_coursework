@@ -37,6 +37,7 @@ namespace Coursework
         }
         public void AnyMoreActions()
         {
+            Console.WriteLine("-----------------------------------");
             Console.WriteLine("Введите следующую команду:");
             ChooseWhatToDo();
         }
