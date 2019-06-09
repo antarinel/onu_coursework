@@ -12,11 +12,7 @@ namespace Coursework
     #region Абстрактная фабрика
     public abstract class Factory
     {
-        public Factory()
-        {
-            CreateFile();
-        }
-        public abstract void CreateFile();
+        public abstract IFile CreateFile();
         public static List<string> ListOfFiles = new List<string>();
         public static void PrintListOfFiles()
         {
@@ -39,12 +35,13 @@ namespace Coursework
     #region Фабрика картинок
     public class PictureFactory : Factory
     {
-        public override void CreateFile()
+        public override IFile CreateFile()
         {
-            IFile picture = new Picture();
+            IFile newPicture = new Picture();
             Console.WriteLine("Введите название картинки:");
-            string name = picture.GetName();
+            string name = newPicture.GetName();
             ListOfFiles.Add("Картинка "+name);
+            return newPicture;
         }
     }
     #endregion
@@ -54,12 +51,13 @@ namespace Coursework
     #region Фабрика текстовых файлов
     public class TextFileFactory : Factory
     {
-        public override void CreateFile()
+        public override IFile CreateFile()
         {
             IFile textFile = new TextFile();
             Console.WriteLine("Введите название текстового файла:");
             string name = textFile.GetName();
             ListOfFiles.Add("Текстовый файл " + name);
+            return textFile;
         }
     }
     #endregion
@@ -69,12 +67,13 @@ namespace Coursework
     #region Фабрика аудиофайлов
     public class AudioFileFactory : Factory
     {
-        public override void CreateFile()
+        public override IFile CreateFile()
         {
             IFile audioFile = new AudioFile();
             Console.WriteLine("Введите название аудиофайла:");
             string name = audioFile.GetName();
             ListOfFiles.Add("Аудиофайл " + name);
+            return audioFile;
         }
     }
     #endregion
@@ -84,12 +83,13 @@ namespace Coursework
     #region Фабрика видеофайлов
     public class VideoFileFactory : Factory
     {
-        public override void CreateFile()
+        public override IFile CreateFile()
         {
             IFile videoFile = new VideoFile();
             Console.WriteLine("Введите название видеофайла:");
             string name = videoFile.GetName();
             ListOfFiles.Add("Видеофайл " + name);
+            return videoFile;
         }
     }
     #endregion

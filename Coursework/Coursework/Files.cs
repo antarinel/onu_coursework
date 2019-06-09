@@ -12,6 +12,7 @@ namespace Coursework
     public interface IFile
     {
         string GetName();
+        void ShowContent();
     }
     #region Конкретные продукты - типы файлов
     /// <summary>
@@ -20,10 +21,14 @@ namespace Coursework
     public class Picture : IFile
     {
         private string pictureName;
-        public string GetName()
+        string IFile.GetName()
         {
             this.pictureName = Console.ReadLine();
             return pictureName;
+        }
+        void IFile.ShowContent()
+        {
+            Console.WriteLine("*** Изображение ***");
         }
     }
     /// <summary>
@@ -32,10 +37,14 @@ namespace Coursework
     public class TextFile : IFile
     {
         private string textFileName;
-        public string GetName()
+        string IFile.GetName()
         {
             this.textFileName = Console.ReadLine();
             return textFileName;
+        }
+        void IFile.ShowContent()
+        {
+            Console.WriteLine("Данный файл содержит текст.");
         }
     }
     /// <summary>
@@ -44,10 +53,14 @@ namespace Coursework
     public class AudioFile : IFile
     {
         private string audioFileName;
-        public string GetName()
+        string IFile.GetName()
         {
             this.audioFileName = Console.ReadLine();
             return audioFileName;
+        }
+        void IFile.ShowContent()
+        {
+            Console.WriteLine("Звук /n∞∞∞∞∞∞∞");
         }
     }
     /// <summary>
@@ -56,10 +69,14 @@ namespace Coursework
     public class VideoFile : IFile
     {
         private string videoFileName;
-        public string GetName()
+        string IFile.GetName()
         {
             this.videoFileName = Console.ReadLine();
             return videoFileName;
+        }
+        void IFile.ShowContent()
+        {
+            Console.WriteLine("***Показывается видеоряд***");
         }
     }
     #endregion

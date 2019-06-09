@@ -1,0 +1,28 @@
+﻿<Properties StartupConfiguration="{5D0F07EC-E519-4F3C-8798-91374175AD59}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="UserInteraction.cs">
+    <Files>
+      <File FileName="Program.cs" Line="13" Column="25" />
+      <File FileName="Factory.cs" Line="1" Column="1" />
+      <File FileName="Files.cs" Line="1" Column="1" />
+      <File FileName="UserInteraction.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Coursework" expanded="True">
+            <Node name="Coursework" expanded="True">
+              <Node name="UserInteraction.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Coursework PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
