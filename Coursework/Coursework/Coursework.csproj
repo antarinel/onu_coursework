@@ -46,6 +46,7 @@
     <Compile Include="Factory.cs" />
     <Compile Include="Files.cs" />
     <Compile Include="UserInteraction.cs" />
+    <Compile Include="Observer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
