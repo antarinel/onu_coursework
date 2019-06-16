@@ -1,50 +1,88 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace Coursework
 {
-    /// <summary>
-    /// The Subject abstract class
-    /// </summary>
-    #region Subject
-    abstract class Observer
+    public interface IObserver
     {
-        public Observer()
-        {
-        }
-        private List<string> _listOfFiles = new List<string>();;
-        private List<IUser> _users = new List<IUser>();
+        // Получает обновление от издателя
+        void Update(ISubject subject);
+        string Name();
+        void NewUsername();
+    }
 
-        public void Attach(IUser user)
-        {
-            _users.Add(user);
-        }
+    public interface ISubject
+    {
+        // Присоединяет наблюдателя к издателю.
+        void Attach(IObserver observer);
 
-        public void Detach(IUser user)
-        {
-            _users.Remove(user);
-        }
+        // Отсоединяет наблюдателя от издателя.
+        void Detach(IObserver observer);
 
+        // Уведомляет всех наблюдателей о событии.
+        void Notify();
+    }
+
+    
+    public class Subject : ISubject
+    {
+        // Список подписчиков
+        private List<IObserver> _observers = new List<IObserver>();
+
+        // Методы управления подпиской.
+        public void Attach(IObserver observer)
+        {
+            Console.WriteLine("Пользователь {0} подписался на изменения списка файлов.", observer.Name());
+            this._observers.Add(observer);
+        }
+        public void Detach(IObserver observer)
+        {
+            this._observers.Remove(observer);
+            Console.WriteLine("Пользователь {0} отписался от дальнейших изменений.", observer.Name());
+        }
+        // Запуск обновления в каждом подписчике.
         public void Notify()
         {
-            foreach (IUser user in _users)
+            foreach (var observer in _observers)
             {
-                user.Update(this);
+                observer.Update(this);
+                //Console.WriteLine(observer.Name() + " получил информацию об изменениях.");
             }
-
-            Console.WriteLine("");
         }
-
-        public double PricePerPound
+        //Список файлов
+        public static List<string> ListOfFiles = new List<string>();
+        public static void PrintListOfFiles()
         {
-            get { return _pricePerPound; }
-            set
+            Console.WriteLine("Список файлов:");
+            foreach (string name in ListOfFiles)
             {
-                if (_pricePerPound != value)
-                {
-                    _pricePerPound = value;
-                    Notify(); //Automatically notify our observers of price changes
-                }
+                Console.WriteLine(name);
             }
+        }
+        public void FileHasBeenCreated(IFile file)
+        {
+            ListOfFiles.Add(file.Type() + " " + file.Name());
+            Console.WriteLine(file.Type() + " " + file.Name() + " теперь в списке");
+            this.Notify();
         }
     }
-    #endregion
+    public class Observer : IObserver
+    {
+        string userName;
+        string IObserver.Name() { return userName; }
+        //Метод создания новых пользователей
+        void IObserver.NewUsername()
+        {
+            Console.WriteLine("Введите имя пользователя:");
+            this.userName = Console.ReadLine();
+        }
+        public void Update(ISubject subject)
+        {
+            Console.WriteLine("{0} получил информацию об изменениях.", userName);
+        }
+    }
+
 }

@@ -13,20 +13,6 @@ namespace Coursework
     public abstract class Factory
     {
         public abstract IFile CreateFile();
-        public static List<string> ListOfFiles = new List<string>();
-        public static void PrintListOfFiles()
-        {
-            Console.WriteLine("Список файлов:");
-            foreach (string name in ListOfFiles)
-            {
-                Console.WriteLine(name);
-            }
-        }
-        public static void FileHasBeenCreated()
-        {
-            int i = ListOfFiles.Count-1;
-            Console.WriteLine(ListOfFiles[i] + " теперь в списке");
-        }
     }
     #endregion
     /// <summary>
@@ -38,9 +24,8 @@ namespace Coursework
         public override IFile CreateFile()
         {
             IFile newPicture = new Picture();
-            Console.WriteLine("Введите название картинки:");
+            Console.WriteLine("Введите название изображения:");
             string name = newPicture.GetName();
-            ListOfFiles.Add("Картинка "+name);
             return newPicture;
         }
     }
@@ -56,7 +41,6 @@ namespace Coursework
             IFile textFile = new TextFile();
             Console.WriteLine("Введите название текстового файла:");
             string name = textFile.GetName();
-            ListOfFiles.Add("Текстовый файл " + name);
             return textFile;
         }
     }
@@ -72,7 +56,6 @@ namespace Coursework
             IFile audioFile = new AudioFile();
             Console.WriteLine("Введите название аудиофайла:");
             string name = audioFile.GetName();
-            ListOfFiles.Add("Аудиофайл " + name);
             return audioFile;
         }
     }
@@ -88,7 +71,6 @@ namespace Coursework
             IFile videoFile = new VideoFile();
             Console.WriteLine("Введите название видеофайла:");
             string name = videoFile.GetName();
-            ListOfFiles.Add("Видеофайл " + name);
             return videoFile;
         }
     }
