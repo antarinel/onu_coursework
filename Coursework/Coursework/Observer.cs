@@ -10,6 +10,7 @@ namespace Coursework
     {
         // Получает обновление от издателя
         void Update(ISubject subject);
+        //Данные о подписчике
         string Name();
         void NewUsername();
     }
@@ -79,6 +80,7 @@ namespace Coursework
             Console.WriteLine("Введите имя пользователя:");
             this.userName = Console.ReadLine();
         }
+        //Метод обновления пользователей
         public void Update(ISubject subject)
         {
             Console.WriteLine("{0} получил информацию об изменениях.", userName);
